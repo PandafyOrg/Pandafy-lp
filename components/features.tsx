@@ -68,7 +68,7 @@ export default function Features() {
             </span>
             <span className="relative flex items-center gap-2">
               <span className="size-1.5 rounded-full bg-[#7FF20C] shadow-[0_0_18px_rgba(127,242,12,0.95)] transition-transform duration-500 group-hover:scale-125" />
-              <span className="text-[#0D261F]">O Sistema Etz.org</span>
+              <span className="text-[#0D261F]">Soluções Etz.org</span>
             </span>
           </button>
         </div>
@@ -78,8 +78,12 @@ export default function Features() {
             geist.className,
           )}
         >
-          A Etz.org cria sistemas inteligentes que trabalham pelo seu negócio.
+          Como nossos agentes de IA e automações funcionam na prática
         </h2>
+        <p className="mx-auto -mt-8 mb-4 max-w-3xl text-center text-lg leading-8 text-[#243F38]/78">
+          Cada sistema inteligente para negócios nasce de um objetivo claro: responder mais rápido, vender melhor,
+          organizar dados e reduzir tarefas repetitivas sem trocar toda a operação.
+        </p>
         <FollowerPointerCard
           title={
             <div className="flex items-center gap-2">
@@ -106,10 +110,12 @@ export default function Features() {
                 style={{ transition: "all 0s ease-in-out" }}
               >
                 <div className="flex flex-col gap-4">
-                  <h3 className="text-2xl leading-none font-semibold tracking-tight">Agentes de IA</h3>
+                  <h3 className="text-xl leading-tight font-semibold tracking-tight sm:text-2xl">
+                    Agentes de IA para atendimento, vendas e suporte automático
+                  </h3>
                   <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
                     <p className="max-w-[460px]">
-                      Atendimento, vendas e suporte automáticos
+                      Qualifique leads, responda clientes e acione próximos passos com atendimento automatizado 24h.
                     </p>
                   </div>
                 </div>
@@ -122,7 +128,7 @@ export default function Features() {
                     <div className="absolute inset-0">
                       <img
                         src="/features-img.png"
-                        alt="Arrow-CoreExchange"
+                        alt="Fluxo de agente de IA para empresas integrado a atendimento, vendas e CRM"
                         className="w-full h-full object-cover rounded-xl"
                       />
                     </div>
@@ -215,7 +221,7 @@ export default function Features() {
                         >
                           <img
                             src="/etz-logo.png"
-                            alt="Logo"
+                            alt="Etz.org - agentes de IA e automações para empresas"
                             className="w-full h-full object-cover"
                           />
                         </motion.div>
@@ -294,16 +300,18 @@ export default function Features() {
                 style={{ transition: "all 0s ease-in-out" }}
               >
                 <div className="flex flex-col gap-4">
-                  <h3 className="text-2xl leading-none font-semibold tracking-tight">Automações de processos</h3>
+                  <h3 className="text-xl leading-tight font-semibold tracking-tight sm:text-2xl">
+                    Automação de processos: menos tarefas manuais, mais eficiência
+                  </h3>
                   <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
                     <p className="max-w-[460px]">
-                      Menos tarefas manuais, mais eficiência
+                      Conecte ferramentas, padronize rotinas e elimine retrabalho da operação comercial e administrativa.
                     </p>
                   </div>
                 </div>
                 <div className="flex min-h-[300px] grow items-start justify-center select-none">
-                  <h1 className="mt-8 text-center text-5xl leading-[100%] font-semibold sm:leading-normal lg:mt-12 lg:text-6xl">
-                    <span className='bg-background relative mt-3 inline-block w-fit rounded-md border px-1.5 py-0.5 before:absolute before:top-0 before:left-0 before:z-10 before:h-full before:w-full before:bg-[url("/noise.gif")] before:opacity-[0.09] before:content-[""]'>
+                  <div className="mt-8 text-center text-5xl leading-[100%] font-semibold sm:leading-normal lg:mt-12 lg:text-6xl">
+                    <span className="bg-background relative mt-3 inline-block w-fit rounded-md border px-1.5 py-0.5">
                       <ScrambleHover
                         text="Fluxo ativo"
                         scrambleSpeed={70}
@@ -315,7 +323,7 @@ export default function Features() {
                         characters="abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;':\,./<>?"
                       />
                     </span>
-                  </h1>
+                  </div>
                   <div className="absolute top-64 z-10 flex items-center justify-center">
                     <div className="w-[400px] h-[400px]">
                       <Suspense
@@ -350,10 +358,12 @@ export default function Features() {
                 style={{ transition: "all 0s ease-in-out" }}
               >
                 <div className="flex flex-col gap-4">
-                  <h3 className="text-2xl leading-none font-semibold tracking-tight">Painel de resultados</h3>
+                  <h3 className="text-xl leading-tight font-semibold tracking-tight sm:text-2xl">
+                    Painel de resultados em tempo real para decisões rápidas
+                  </h3>
                   <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
                     <p className="max-w-[460px]">
-                      Dados claros, decisões rápidas
+                      Acompanhe leads, atendimentos, vendas e gargalos em dashboards feitos para decidir sem planilhas soltas.
                     </p>
                   </div>
                 </div>
@@ -446,10 +456,12 @@ export default function Features() {
                 style={{ transition: "all 0s ease-in-out" }}
               >
                 <div className="flex flex-col gap-4">
-                  <h3 className="text-2xl leading-none font-semibold tracking-tight">Landing pages inteligentes</h3>
+                  <h3 className="text-xl leading-tight font-semibold tracking-tight sm:text-2xl">
+                    Landing pages com IA integrada para captar mais leads
+                  </h3>
                   <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
                     <p className="max-w-[460px]">
-                      Captação de leads integrada a IA
+                      Capte contatos qualificados e envie cada oportunidade para um fluxo de IA para vendas B2B.
                     </p>
                   </div>
                 </div>
@@ -457,7 +469,7 @@ export default function Features() {
                   <div className="relative w-full max-w-sm">
                     <img
                       src="/modern-grid-layout.png"
-                      alt="Dynamic Layout Example"
+                      alt="Exemplo de landing page inteligente com captação de leads por IA"
                       className="w-full h-auto rounded-lg shadow-lg"
                     />
                     <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-[#1C4259]/10 to-transparent"></div>
@@ -475,13 +487,13 @@ export default function Features() {
           className="mt-12 text-center"
         >
           <p className="mb-8 text-xl font-medium text-[#1C4259] md:text-2xl">
-            Você não precisa entender de IA. Nós cuidamos de tudo.
+            Você não precisa entender de IA. A Etz.org cuida da estratégia, integração e implantação.
           </p>
           <Button
             onClick={scrollToPromo}
             className="h-14 rounded-lg bg-[#FFF] px-8 text-lg font-bold tracking-[0.01em] text-[#1C4259] shadow-[0_16px_36px_rgba(13,38,31,0.22)] ring-1 ring-white/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:border-[#C1F277] hover:text-[#FFF] hover:bg-[#12382E] hover:shadow-[0_20px_44px_rgba(13,38,31,0.30),0_0_0_4px_rgba(127,242,12,0.10)] active:translate-y-0 active:scale-[0.98]"
           >
-            Quero esse sistema
+            Quero um agente de IA para minha empresa
           </Button>
         </motion.div>
       </motion.div>

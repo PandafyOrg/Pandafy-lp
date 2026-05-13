@@ -13,6 +13,7 @@ const clientes = [
     id: 1,
     name: "Carlos Silva",
     designation: "CEO, TechStart",
+    altText: "Cliente da Etz.org com resultado em automação empresarial",
     image:
       "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
   },
@@ -20,6 +21,7 @@ const clientes = [
     id: 2,
     name: "Ana Oliveira",
     designation: "Fundadora, Digital Agency",
+    altText: "Cliente da Etz.org usando agente de IA para vendas B2B",
     image:
       "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
   },
@@ -27,6 +29,7 @@ const clientes = [
     id: 3,
     name: "Marcos Santos",
     designation: "Diretor, E-commerce Plus",
+    altText: "Cliente da Etz.org com atendimento automatizado por IA",
     image:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
   },
@@ -34,6 +37,7 @@ const clientes = [
     id: 4,
     name: "Julia Costa",
     designation: "CMO, Growth Co",
+    altText: "Cliente da Etz.org com captação de leads com IA",
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
   },
@@ -41,6 +45,7 @@ const clientes = [
     id: 5,
     name: "Pedro Lima",
     designation: "Founder, SaaS Brasil",
+    altText: "Cliente da Etz.org com automação de processos para empresas",
     image:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80",
   },
@@ -48,6 +53,7 @@ const clientes = [
     id: 6,
     name: "Fernanda Reis",
     designation: "Head of Sales, Vendas Pro",
+    altText: "Cliente da Etz.org com sistema inteligente para negócios",
     image:
       "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
   },
@@ -110,11 +116,12 @@ export function ProvaSocialSection() {
               geist.className
             )}
           >
-            Empresas que já transformaram seus resultados
+            Empresas que automatizaram processos e escalaram com a Etz.org
           </h2>
 
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Junte-se a dezenas de empresas que já estão escalando seus negócios com a Etz.org
+            Negócios que reduzem tarefas manuais ganham velocidade comercial, controle da operação e mais previsibilidade
+            para crescer.
           </p>
 
           <motion.div
@@ -142,7 +149,7 @@ export function ProvaSocialSection() {
               className="h-14 rounded-lg bg-[#FFF] px-8 text-lg font-bold tracking-[0.01em] text-[#1C4259] shadow-[0_16px_36px_rgba(13,38,31,0.22)] ring-1 ring-white/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:border-[#C1F277] hover:text-[#FFF] hover:bg-[#12382E] hover:shadow-[0_20px_44px_rgba(13,38,31,0.30),0_0_0_4px_rgba(127,242,12,0.10)] active:translate-y-0 active:scale-[0.98]"
 
             >
-              Quero esses resultados
+              Ver cases de automação
             </Button>
           </motion.div>
         </div>

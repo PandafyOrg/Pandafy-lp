@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { MinusIcon, PlusIcon } from "@radix-ui/react-icons"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 
 export function FAQSection() {
   const [openItems, setOpenItems] = useState<number[]>([])
@@ -13,29 +13,29 @@ export function FAQSection() {
 
   const faqs = [
     {
-      question: "Que tipo de solução a Etz.org desenvolve para empresas?",
+      question: "O que é um agente de IA e como ele funciona para empresas?",
       answer:
-        "Desenvolvemos soluções sob medida em software, automações, agentes de IA, dashboards operacionais e landing pages orientadas a conversão. O foco é resolver gargalos reais do negócio com tecnologia aplicável ao dia a dia da empresa.",
+        "Um agente de IA para empresas atende clientes, qualifica leads, responde dúvidas, executa tarefas repetitivas e envia informações para CRM, agenda, financeiro ou outros sistemas. Na prática, ele trabalha como uma camada inteligente entre a demanda do cliente e a operação da empresa.",
     },
     {
-      question: "Vocês trabalham com projetos personalizados?",
+      question: "Como funciona a automação de processos personalizada para minha empresa?",
       answer:
-        "Sim. Cada projeto é desenhado com base no momento da empresa, nos sistemas já utilizados e nas metas de operação, vendas ou atendimento. Não entregamos pacotes genéricos quando o desafio pede algo específico.",
+        "A Etz.org mapeia os gargalos atuais, identifica tarefas manuais de maior impacto e cria fluxos sob medida para atendimento, vendas e operação. A automação de processos é integrada às ferramentas que a empresa já usa sempre que isso acelera o resultado.",
     },
     {
-      question: "A Etz.org consegue integrar com ferramentas que já usamos hoje?",
+      question: "O sistema de automação da Etz.org integra com CRM, WhatsApp e ERP?",
       answer:
-        "Sim. Podemos integrar a solução com CRMs, ERPs, plataformas de atendimento, automação de marketing, APIs internas e outras ferramentas que já fazem parte da operação da sua empresa.",
+        "Sim. O sistema de automação pode integrar CRM, WhatsApp, ERP, plataformas de atendimento, automação de marketing, APIs internas e outras ferramentas já presentes na rotina da empresa.",
     },
     {
-      question: "Quanto tempo leva para implementar um projeto?",
+      question: "Quanto tempo leva para implantar um agente de IA na minha empresa?",
       answer:
-        "O prazo varia conforme a complexidade, o número de integrações e a maturidade do processo atual. Em geral, começamos por um diagnóstico rápido, priorizamos entregas de maior impacto e estruturamos um cronograma claro desde o início.",
+        "O prazo depende da complexidade, das integrações e da maturidade do processo atual. Em geral, começamos com um diagnóstico rápido, priorizamos a entrega de maior impacto e estruturamos um cronograma claro antes da implantação.",
     },
     {
-      question: "Como funciona o suporte depois da entrega?",
+      question: "Como é o suporte pós-implementação da automação?",
       answer:
-        "Acompanhamos a implantação, ajustamos pontos finos e damos suporte para garantir estabilidade e resultado. Dependendo do projeto, também podemos seguir com evolução contínua, manutenção e novas automações.",
+        "A Etz.org acompanha a implantação, ajusta fluxos, monitora estabilidade e dá suporte para manter a automação gerando resultado. Dependendo do projeto, também seguimos com evolução contínua, manutenção e novas automações.",
     },
   ]
 
@@ -56,7 +56,7 @@ export function FAQSection() {
         >
           Perguntas frequentes sobre{" "}
           <span className="bg-gradient-to-b from-[#0D261F] via-[#1C4259] to-[#60BFA4] bg-clip-text text-transparent">
-            nossas soluções
+            automação e agentes de IA
           </span>
         </motion.h2>
 
@@ -96,23 +96,23 @@ export function FAQSection() {
                   )}
                 </motion.div>
               </div>
-              <AnimatePresence>
-                {openItems.includes(index) && (
-                  <motion.div
-                    className="mt-4 text-muted-foreground leading-relaxed overflow-hidden"
-                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                    animate={{ opacity: 1, height: "auto", marginTop: 16 }}
-                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      ease: "easeInOut",
-                      opacity: { duration: 0.2 },
-                    }}
-                  >
-                    {faq.answer}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <motion.div
+                className="overflow-hidden text-muted-foreground leading-relaxed"
+                initial={false}
+                animate={{
+                  opacity: openItems.includes(index) ? 1 : 0,
+                  height: openItems.includes(index) ? "auto" : 0,
+                  marginTop: openItems.includes(index) ? 16 : 0,
+                }}
+                transition={{
+                  duration: 0.4,
+                  ease: "easeInOut",
+                  opacity: { duration: 0.2 },
+                }}
+                aria-hidden={!openItems.includes(index)}
+              >
+                {faq.answer}
+              </motion.div>
             </motion.div>
           ))}
         </div>

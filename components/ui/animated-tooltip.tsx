@@ -11,6 +11,7 @@ export const AnimatedTooltip = ({
     name: string
     designation: string
     image: string
+    altText?: string
   }[]
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -69,7 +70,7 @@ export const AnimatedTooltip = ({
             height={100}
             width={100}
             src={item.image || "/placeholder.svg"}
-            alt={item.name}
+            alt={item.altText || item.name}
             className="relative !m-0 !p-0 h-14 w-14 rounded-full border-2 border-[#EEF8F5] object-cover object-top transition duration-500 group-hover:z-30 group-hover:scale-105"
           />
         </div>

@@ -23,8 +23,13 @@ export function NewReleasePromo() {
 
           <div className="relative z-10">
             <div className="mt-8 text-center">
-              <h2 className="mb-6 text-4xl font-bold text-white">Automatize processos e escale com clareza.</h2>
-              <p className="mb-8 text-white/85">Design claro, performance forte e a paleta certa para destacar sua marca.</p>
+              <h2 className="mb-6 text-4xl font-bold text-white">
+                Automatize processos e escale com clareza.
+              </h2>
+              <p className="mx-auto mb-8 max-w-2xl text-white/85">
+                Comece com um diagnóstico rápido e descubra onde agentes de IA, automação empresarial e software sob
+                medida podem gerar resultado primeiro.
+              </p>
               <div className="flex items-center justify-center">
                 <Link href="/comecar">
                   <div className="group mt-10 flex h-[64px] cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-white/15 p-[11px] shadow-[0_12px_30px_rgba(13,38,31,0.16)]">
@@ -47,7 +52,7 @@ export function NewReleasePromo() {
                           <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
                           <path d="M2 12h20"></path>
                         </svg>
-                        Começar agora
+                        Começar minha automação
                       </p>
                     </div>
                     <div className="flex size-[26px] items-center justify-center rounded-full border-2 border-white/40 text-white transition-all ease-in-out group-hover:ml-2">

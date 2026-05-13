@@ -15,7 +15,7 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const mobileNavItems = [
-    { label: "Sistema", target: "features" },
+    { label: "Soluções", target: "features" },
     { label: "FAQ", target: "faq" },
   ]
 
@@ -92,7 +92,7 @@ export default function Home() {
 
         <div className="absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium md:flex md:space-x-3">
           <button type="button" className="header-chip cursor-pointer" onClick={() => scrollToSection("features")}>
-            <span>Sistema</span>
+            <span>Soluções</span>
           </button>
           <button type="button" className="header-chip cursor-pointer" onClick={() => scrollToSection("faq")}>
             <span>FAQ</span>
@@ -101,7 +101,7 @@ export default function Home() {
 
         <div className="flex items-center gap-2">
           <Link href="/comecar" className="header-chip header-chip-primary cursor-pointer px-5 font-bold">
-            <span>Começar</span>
+            <span>Começar automação</span>
           </Link>
         </div>
       </header>
@@ -162,7 +162,7 @@ export default function Home() {
                 href="/comecar"
                 className="mt-2 flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#7FF20C] to-[#C1F277] px-4 text-base font-bold text-[#0D261F] shadow-[0_14px_34px_rgba(127,242,12,0.28)] transition-all duration-200 hover:shadow-[0_18px_42px_rgba(127,242,12,0.34)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#60BFA4]/24 active:scale-[0.98]"
               >
-                Começar
+                Começar automação
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
             </nav>

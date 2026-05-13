@@ -68,8 +68,13 @@ export function ProblemaSection() {
               geist.className
             )}
           >
-            Seu negócio está perdendo tempo, dinheiro e oportunidades todos os dias.
+            Por que empresas perdem leads e dinheiro sem automação de processos?
           </h2>
+
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-8 text-[#243F38]/78">
+            Sem automação empresarial, atendimento lento, retrabalho e falta de dados travam vendas todos os dias. A
+            Etz.org identifica esses gargalos e transforma etapas manuais em fluxos inteligentes.
+          </p>
 
           <div className="grid gap-4 md:gap-6 max-w-2xl mx-auto">
             {problemas.map((problema, index) => (
@@ -99,7 +104,7 @@ export function ProblemaSection() {
               className="h-14 rounded-lg bg-[#FFF] px-8 text-lg font-bold tracking-[0.01em] text-[#1C4259] shadow-[0_16px_36px_rgba(13,38,31,0.22)] ring-1 ring-white/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:border-[#C1F277] hover:text-[#FFF] hover:bg-[#12382E] hover:shadow-[0_20px_44px_rgba(13,38,31,0.30),0_0_0_4px_rgba(127,242,12,0.10)] active:translate-y-0 active:scale-[0.98]"
 
             >
-              Isso acontece comigo
+              Quero resolver isso com IA
             </Button>
           </motion.div>
         </div>

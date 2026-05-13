@@ -64,7 +64,7 @@ export function StickyFooter() {
                   onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
                   onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
                 >
-                  Docs
+                  Soluções
                 </li>
                 <li
                   className="hover:underline cursor-pointer transition-colors"
@@ -72,7 +72,7 @@ export function StickyFooter() {
                   onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
                   onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
                 >
-                  Components
+                  FAQ
                 </li>
               </ul>
               <ul className="space-y-2">
@@ -82,7 +82,7 @@ export function StickyFooter() {
                   onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
                   onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
                 >
-                  Github
+                  Agentes de IA
                 </li>
                 <li
                   className="hover:underline cursor-pointer transition-colors"
@@ -90,7 +90,7 @@ export function StickyFooter() {
                   onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
                   onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
                 >
-                  Twitter
+                  Automação de processos
                 </li>
                 <li
                   className="hover:underline cursor-pointer transition-colors"
@@ -98,7 +98,7 @@ export function StickyFooter() {
                   onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
                   onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
                 >
-                  Discord
+                  Software sob medida
                 </li>
               </ul>
             </motion.div>

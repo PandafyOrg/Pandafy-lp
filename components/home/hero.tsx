@@ -45,12 +45,12 @@ export default function Hero() {
               geist.className,
             )}
           >
-            <span className="text-[#6DE349]">Transformamos</span> tecnologia em <span className="text-[#60BFA4]">crescimento real</span> para o seu negócio.
+            <span className="text-[#6DE349]">Automação de processos</span> para empresas com agente de IA e software sob medida.
           </h1>
 
           <p className="mt-2 mb-4 max-w-[570px] text-base leading-7 text-[#243F38]/78 sm:text-lg sm:leading-8">
-            Soluções inteligentes em IA, automações e software sob medida para empresas que querem escalar com
-            eficiência, performance e inovação.
+            A Etz.org cria agente de IA para empresas, automação de atendimento, IA para vendas e software sob
+            medida no Brasil para tirar tarefas manuais da operação e acelerar o crescimento.
           </p>
 
           <Button
@@ -58,7 +58,7 @@ export default function Hero() {
             className="h-14 rounded-lg bg-[#FFF] px-8 text-lg font-bold tracking-[0.01em] text-[#1C4259] shadow-[0_16px_36px_rgba(13,38,31,0.22)] ring-1 ring-white/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:border-[#C1F277] hover:text-[#FFF] hover:bg-[#12382E] hover:shadow-[0_20px_44px_rgba(13,38,31,0.30),0_0_0_4px_rgba(127,242,12,0.10)] active:translate-y-0 active:scale-[0.98]"
 
           >
-            Quero escalar meu negócio
+            Automatize meu negócio agora
           </Button>
         </motion.div>
 
@@ -72,7 +72,7 @@ export default function Hero() {
           <div className="absolute right-[10%] bottom-[5%] -z-10 h-28 w-[66%] rounded-full bg-[#1C4259]/18 blur-2xl" />
           <img
             src="/phone-image.png"
-            alt="Telefone exibindo uma interface com rede tecnológica luminosa"
+            alt="Interface de agente de IA da Etz.org para atendimento automatizado em empresas"
             width={612}
             height={408}
             draggable={false}
