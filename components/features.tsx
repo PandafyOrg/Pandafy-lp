@@ -1,501 +1,314 @@
 "use client"
 
-import type React from "react"
-
-import Earth from "./ui/globe"
-import ScrambleHover from "./ui/scramble"
-import { FollowerPointerCard } from "./ui/following-pointer"
 import { motion, useInView } from "framer-motion"
 import { Suspense, useRef, useState } from "react"
-import { geist } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import Earth from "./ui/globe"
+import ScrambleHover from "./ui/scramble"
+import {
+  Code,
+  BarChart2,
+  ShieldCheck,
+  Headphones,
+  MessageSquare,
+  DollarSign,
+  LifeBuoy,
+  Users,
+  CreditCard,
+  CalendarDays,
+} from "lucide-react"
+
+const features = [
+  {
+    icon: Code,
+    title: "Software sob medida",
+    description: "Desenvolvemos exatamente o que você precisa — sem feature desnecessária.",
+  },
+  {
+    icon: BarChart2,
+    title: "Analytics e dashboards",
+    description: "Dados do seu negócio em painéis claros, em tempo real.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Segurança e conformidade",
+    description: "Soluções que respeitam LGPD e as melhores práticas de segurança.",
+  },
+  {
+    icon: Headphones,
+    title: "Suporte contínuo",
+    description: "Parceria de longo prazo: evoluímos junto com o seu negócio.",
+  },
+]
+
+const agentLeft = [
+  { label: "Atendimento", icon: MessageSquare },
+  { label: "Vendas", icon: DollarSign },
+  { label: "Suporte", icon: LifeBuoy },
+]
+
+const agentRight = [
+  { label: "CRM", icon: Users },
+  { label: "Financeiro", icon: CreditCard },
+  { label: "Agenda", icon: CalendarDays },
+]
 
 export default function Features() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
-  const [isHovering, setIsHovering] = useState(false)
-  const [isCliHovering, setIsCliHovering] = useState(false)
-  const [isFeature3Hovering, setIsFeature3Hovering] = useState(false)
-  const [isFeature4Hovering, setIsFeature4Hovering] = useState(false)
-  const [inputValue, setInputValue] = useState("")
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
+  const [isAgentHovering, setIsAgentHovering] = useState(false)
+  const [isFlowHovering, setIsFlowHovering] = useState(false)
 
   const baseColor: [number, number, number] = [0.376, 0.749, 0.643]
   const glowColor: [number, number, number] = [0.757, 0.949, 0.467]
-  const markerColor: [number, number, number] = [0.11, 0.259, 0.349]
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault()
-      setInputValue("")
-    }
-  }
-
-  const scrollToPromo = () => {
-    const element = document.getElementById("cta-section")
-    if (element) {
-      const headerOffset = 120
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-      const offsetPosition = elementPosition - headerOffset
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      })
-    }
-  }
+  const markerColor: [number, number, number] = [0.051, 0.149, 0.122]
 
   return (
-    <section id="features" className="text-foreground relative overflow-hidden py-12 sm:py-24 md:py-32">
-      <div className="bg-[#60BFA4] absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 rounded-full opacity-35 blur-3xl select-none"></div>
-      <div className="via-[#60BFA4]/50 absolute top-0 left-1/2 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent to-transparent transition-all ease-in-out"></div>
+    <section
+      id="features-section"
+      className="relative bg-[var(--color-bone-50)] py-24 md:py-32 lg:py-40"
+    >
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.5, delay: 0 }}
-        className="container mx-auto flex flex-col items-center gap-6 sm:gap-12"
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+        transition={{ duration: 0.6 }}
+        className="container mx-auto px-4"
       >
-        <div className="mb-2 flex justify-center">
-          <button
-            type="button"
-            className="group relative z-[60] mx-auto inline-flex items-center gap-3 overflow-hidden rounded-full border border-[#60BFA4]/35 bg-white/75 py-1.5 pr-5 pl-2 text-xs font-semibold tracking-[0.02em] text-[#0D261F] shadow-[0_18px_50px_rgba(28,66,89,0.10)] backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:border-[#7FF20C]/60 hover:bg-white hover:shadow-[0_24px_70px_rgba(96,191,164,0.20)] active:scale-[0.98] md:text-sm"
+        <div className="mx-auto max-w-4xl text-center">
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-bone-200)] bg-[var(--color-bone-0)] px-3 py-1.5 text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-[var(--color-bone-600)] font-[family-name:var(--font-mono)]">
+            <span className="size-1.5 rounded-full bg-[var(--color-bamboo-400)]" />
+            Soluções
+          </span>
+
+          <h2
+            className={cn(
+              "mb-6 text-balance font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--color-forest-600)]",
+              "text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem]",
+              "font-[family-name:var(--font-display)]"
+            )}
           >
-            <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_50%,rgba(127,242,12,0.24),transparent_30%),linear-gradient(90deg,rgba(96,191,164,0.10),transparent_55%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
-            <span className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#7FF20C] to-transparent opacity-70 transition-all duration-700 group-hover:inset-x-3" />
-            <span className="pointer-events-none absolute inset-x-8 bottom-0 h-px bg-gradient-to-r from-transparent via-[#60BFA4] to-transparent opacity-70 transition-all duration-700 group-hover:inset-x-3" />
-            <span className="relative flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-[#1C4259] via-[#60BFA4] to-[#7FF20C] text-[11px] font-bold text-white shadow-[0_10px_26px_rgba(96,191,164,0.30)] ring-1 ring-white/70">
-              Etz
-            </span>
-            <span className="relative flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-[#7FF20C] shadow-[0_0_18px_rgba(127,242,12,0.95)] transition-transform duration-500 group-hover:scale-125" />
-              <span className="text-[#0D261F]">Soluções Etz.org</span>
-            </span>
-          </button>
-        </div>
-        <h2
-          className={cn(
-            "via-foreground mb-8 bg-gradient-to-r from-[#0D261F] via-[#1C4259] to-[#60BFA4] bg-clip-text text-center text-3xl sm:text-4xl md:text-[54px] md:leading-[60px] font-semibold tracking-tighter text-transparent max-w-4xl",
-            geist.className,
-          )}
-        >
-          Como nossos agentes de IA e automações funcionam na prática
-        </h2>
-        <p className="mx-auto -mt-8 mb-4 max-w-3xl text-center text-lg leading-8 text-[#243F38]/78">
-          Cada sistema inteligente para negócios nasce de um objetivo claro: responder mais rápido, vender melhor,
-          organizar dados e reduzir tarefas repetitivas sem trocar toda a operação.
-        </p>
-        <FollowerPointerCard
-          title={
-            <div className="flex items-center gap-2">
-              <span>💻</span>
-            </div>
-          }
-        >
-          <div className="cursor-none">
-            <div className="grid grid-cols-12 gap-4 justify-center">
-              {/* Cli */}
-              <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 p-6 shadow-xl transition-all ease-in-out md:col-span-6 xl:col-span-6 xl:col-start-2"
-                onMouseEnter={() => setIsCliHovering(true)}
-                onMouseLeave={() => setIsCliHovering(false)}
-                ref={ref}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                whileHover={{
-                  scale: 1.02,
-                  borderColor: "rgba(96, 191, 164, 0.55)",
-                  boxShadow: "0 24px 60px rgba(28, 66, 89, 0.12)",
-                }}
-                style={{ transition: "all 0s ease-in-out" }}
-              >
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-xl leading-tight font-semibold tracking-tight sm:text-2xl">
-                    Agentes de IA para atendimento, vendas e suporte automático
-                  </h3>
-                  <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
-                    <p className="max-w-[460px]">
-                      Qualifique leads, responda clientes e acione próximos passos com atendimento automatizado 24h.
-                    </p>
-                  </div>
-                </div>
-                <div className="pointer-events-none flex grow items-center justify-center select-none relative">
-                  <div
-                    className="relative w-full h-[400px] rounded-xl overflow-hidden"
-                    style={{ borderRadius: "20px" }}
-                  >
-                    {/* Background Image */}
-                    <div className="absolute inset-0">
-                      <img
-                        src="/features-img.png"
-                        alt="Fluxo de agente de IA para empresas integrado a atendimento, vendas e CRM"
-                        className="w-full h-full object-cover rounded-xl"
-                      />
-                    </div>
+            O que a Pandafy entrega
+          </h2>
 
-                    {/* Animated SVG Connecting Lines */}
-                    <motion.div
-                      className="absolute inset-0 flex items-center justify-center"
-                      initial={{ opacity: 0 }}
-                      animate={isCliHovering ? { opacity: 1 } : { opacity: 0 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <svg width="100%" height="100%" viewBox="0 0 121 94" className="absolute">
-                        <motion.path
-                          d="M 60.688 1.59 L 60.688 92.449 M 60.688 92.449 L 119.368 92.449 M 60.688 92.449 L 1.414 92.449"
-                          stroke="rgb(255,222,213)"
-                          fill="transparent"
-                          strokeDasharray="2 2"
-                          initial={{ pathLength: 0 }}
-                          animate={isCliHovering ? { pathLength: 1 } : { pathLength: 0 }}
-                          transition={{
-                            duration: 2,
-                            ease: "easeInOut",
-                          }}
-                        />
-                      </svg>
-                      <svg width="100%" height="100%" viewBox="0 0 121 94" className="absolute">
-                        <motion.path
-                          d="M 60.688 92.449 L 60.688 1.59 M 60.688 1.59 L 119.368 1.59 M 60.688 1.59 L 1.414 1.59"
-                          stroke="rgb(255,222,213)"
-                          fill="transparent"
-                          strokeDasharray="2 2"
-                          initial={{ pathLength: 0 }}
-                          animate={isCliHovering ? { pathLength: 1 } : { pathLength: 0 }}
-                          transition={{
-                            duration: 2,
-                            delay: 0.5,
-                            ease: "easeInOut",
-                          }}
-                        />
-                      </svg>
-                    </motion.div>
-
-                    {/* Animated glow effect */}
-                    <motion.div
-                      className="absolute top-1/2 left-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7FF20C] opacity-40 blur-[74px]"
-                      initial={{ scale: 1 }}
-                      animate={isCliHovering ? { scale: [1, 1.342, 1, 1.342] } : { scale: 1 }}
-                      transition={{
-                        duration: 3,
-                        ease: "easeInOut",
-                        repeat: isCliHovering ? Number.POSITIVE_INFINITY : 0,
-                        repeatType: "loop",
-                      }}
-                    />
-
-                    {/* Main Content Container with Staggered Animations */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="flex items-center gap-8">
-                        {/* Left Column */}
-                        <div className="flex flex-col gap-3">
-                          {["Atendimento", "Vendas", "Suporte"].map((item, index) => (
-                            <motion.div
-                              key={`left-${index}`}
-                              className="flex items-center gap-2 rounded bg-white px-3 py-2 text-sm font-medium text-[#0D261F] shadow-sm"
-                              initial={{ opacity: 1, x: 0 }}
-                              animate={isCliHovering ? { x: [-20, 0] } : { x: 0 }}
-                              transition={{
-                                duration: 0.5,
-                                delay: index * 0.1,
-                              }}
-                              whileHover={{ scale: 1.05 }}
-                            >
-                              <div className="w-4 h-4 flex items-center justify-center">
-                                {index === 0 && <span className="text-xs">📄</span>}
-                                {index === 1 && <span className="text-xs">💰</span>}
-                                {index === 2 && <span className="text-xs">🏢</span>}
-                              </div>
-                              {item}
-                            </motion.div>
-                          ))}
-                        </div>
-
-                        {/* Center Logo */}
-                        <motion.div
-                          className="mr-3.5 w-20 h-20 rounded-md overflow-hidden shadow-lg"
-                          initial={{ opacity: 1, scale: 1 }}
-                          animate={isCliHovering ? { scale: [1, 1.1, 1] } : { scale: 1 }}
-                          transition={{ duration: 0.6, ease: "easeOut" }}
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                        >
-                          <img
-                            src="/etz-logo.png"
-                            alt="Etz.org - agentes de IA e automações para empresas"
-                            className="w-full h-full object-cover"
-                          />
-                        </motion.div>
-
-                        {/* Right Column */}
-                        <div className="flex flex-col gap-3">
-                          {["CRM", "Financeiro", "Agenda"].map((item, index) => (
-                            <motion.div
-                              key={`right-${index}`}
-                              className="flex items-center gap-2 rounded bg-white px-3 py-2 text-sm font-medium text-[#0D261F] shadow-sm"
-                              initial={{ opacity: 1, x: 0 }}
-                              animate={isCliHovering ? { x: [20, 0] } : { x: 0 }}
-                              transition={{
-                                duration: 0.5,
-                                delay: index * 0.1,
-                              }}
-                              whileHover={{ scale: 1.05 }}
-                            >
-                              <div className="w-4 h-4 flex items-center justify-center">
-                                {index === 0 && <span className="text-xs">👥</span>}
-                                {index === 1 && <span className="text-xs">💳</span>}
-                                {index === 2 && <span className="text-xs">👨‍⚕️</span>}
-                              </div>
-                              {item}
-                            </motion.div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Animated Circular Border */}
-                    <motion.div
-                      className="absolute inset-0 flex items-center justify-center"
-                      initial={{ opacity: 0 }}
-                      animate={isCliHovering ? { opacity: 1 } : { opacity: 0 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <svg width="350" height="350" viewBox="0 0 350 350" className="opacity-40">
-                        <motion.path
-                          d="M 175 1.159 C 271.01 1.159 348.841 78.99 348.841 175 C 348.841 271.01 271.01 348.841 175 348.841 C 78.99 348.841 1.159 271.01 1.159 175 C 1.159 78.99 78.99 1.159 175 1.159 Z"
-                          stroke="rgba(255, 255, 255, 0.38)"
-                          strokeWidth="1.16"
-                          fill="transparent"
-                          strokeDasharray="4 4"
-                          initial={{ pathLength: 0, rotate: 0 }}
-                          animate={isCliHovering ? { pathLength: 1, rotate: 360 } : { pathLength: 0, rotate: 0 }}
-                          transition={{
-                            pathLength: { duration: 3, ease: "easeInOut" },
-                            rotate: {
-                              duration: 20,
-                              repeat: isCliHovering ? Number.POSITIVE_INFINITY : 0,
-                              ease: "linear",
-                            },
-                          }}
-                        />
-                      </svg>
-                    </motion.div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Global */}
-              <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 p-6 shadow-xl transition-all ease-in-out md:col-span-6 xl:col-span-6 xl:col-start-8"
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-                ref={ref}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                whileHover={{
-                  scale: 1.02,
-                  borderColor: "rgba(96, 191, 164, 0.55)",
-                  boxShadow: "0 24px 60px rgba(28, 66, 89, 0.12)",
-                }}
-                style={{ transition: "all 0s ease-in-out" }}
-              >
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-xl leading-tight font-semibold tracking-tight sm:text-2xl">
-                    Automação de processos: menos tarefas manuais, mais eficiência
-                  </h3>
-                  <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
-                    <p className="max-w-[460px]">
-                      Conecte ferramentas, padronize rotinas e elimine retrabalho da operação comercial e administrativa.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex min-h-[300px] grow items-start justify-center select-none">
-                  <div className="mt-8 text-center text-5xl leading-[100%] font-semibold sm:leading-normal lg:mt-12 lg:text-6xl">
-                    <span className="bg-background relative mt-3 inline-block w-fit rounded-md border px-1.5 py-0.5">
-                      <ScrambleHover
-                        text="Fluxo ativo"
-                        scrambleSpeed={70}
-                        maxIterations={20}
-                        useOriginalCharsOnly={false}
-                        className="cursor-pointer bg-gradient-to-t from-[#1C4259] to-[#60BFA4] bg-clip-text text-transparent"
-                        isHovering={isHovering}
-                        setIsHovering={setIsHovering}
-                        characters="abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;':\,./<>?"
-                      />
-                    </span>
-                  </div>
-                  <div className="absolute top-64 z-10 flex items-center justify-center">
-                    <div className="w-[400px] h-[400px]">
-                      <Suspense
-                        fallback={
-                          <div className="bg-secondary/20 h-[400px] w-[400px] animate-pulse rounded-full"></div>
-                        }
-                      >
-                        <Earth baseColor={baseColor} markerColor={markerColor} glowColor={glowColor} dark={0} />
-                      </Suspense>
-                    </div>
-                  </div>
-                  <div className="absolute top-1/2 w-full translate-y-20 scale-x-[1.2] opacity-70 transition-all duration-1000 group-hover:translate-y-8 group-hover:opacity-100">
-                    <div className="from-primary/50 to-primary/0 absolute left-1/2 h-[256px] w-[60%] -translate-x-1/2 scale-[2.5] rounded-[50%] bg-radial from-10% to-60% opacity-20 sm:h-[512px]"></div>
-                    <div className="from-primary/30 to-primary/0 absolute left-1/2 h-[128px] w-[40%] -translate-x-1/2 scale-200 rounded-[50%] bg-radial from-10% to-60% opacity-20 sm:h-[256px]"></div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Smart Components */}
-              <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 p-6 shadow-xl transition-all ease-in-out md:col-span-6 xl:col-span-6 xl:col-start-2"
-                onMouseEnter={() => setIsFeature3Hovering(true)}
-                onMouseLeave={() => setIsFeature3Hovering(false)}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                whileHover={{
-                  scale: 1.02,
-                  borderColor: "rgba(96, 191, 164, 0.55)",
-                  boxShadow: "0 24px 60px rgba(28, 66, 89, 0.12)",
-                }}
-                style={{ transition: "all 0s ease-in-out" }}
-              >
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-xl leading-tight font-semibold tracking-tight sm:text-2xl">
-                    Painel de resultados em tempo real para decisões rápidas
-                  </h3>
-                  <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
-                    <p className="max-w-[460px]">
-                      Acompanhe leads, atendimentos, vendas e gargalos em dashboards feitos para decidir sem planilhas soltas.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex grow items-center justify-center select-none relative min-h-[300px] p-4">
-                  <div className="w-full max-w-lg">
-                    <div className="relative rounded-2xl border border-[#1C4259]/10 bg-white/90 shadow-[0_12px_32px_rgba(28,66,89,0.08)] backdrop-blur-sm">
-                      <div className="p-4">
-                        <textarea
-                          className="min-h-[100px] w-full resize-none border-none bg-transparent text-base leading-relaxed text-[#0D261F] placeholder:text-[#4D6B63] focus:outline-none"
-                          placeholder="Descreva a automação ou o painel que você precisa..."
-                          value={inputValue}
-                          onChange={(e) => setInputValue(e.target.value)}
-                          onKeyDown={handleKeyDown}
-                        />
-                      </div>
-                      <div className="flex items-center justify-between px-4 pb-4">
-                        <div className="flex items-center gap-3">
-                          <button className="rounded-full bg-[#EEF8F5] p-2 transition-colors hover:bg-[#DDF4EC]">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="text-[#4D6B63]"
-                            >
-                              <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
-                            </svg>
-                          </button>
-                          <button className="flex items-center gap-2 rounded-full bg-[#7FF20C] px-4 py-2 font-medium text-[#0D261F] transition-colors hover:bg-[#C1F277]">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <circle cx="12" cy="12" r="10"></circle>
-                              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                              <path d="M2 12h20"></path>
-                            </svg>
-                            Executar
-                          </button>
-                        </div>
-                        <button className="rounded-full bg-[#EEF8F5] p-2 transition-colors hover:bg-[#DDF4EC]">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="text-[#4D6B63]"
-                          >
-                            <path d="m22 2-7 20-4-9-9-4Z"></path>
-                            <path d="M22 2 11 13"></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Dynamic Layouts */}
-              <motion.div
-                className="group border-secondary/40 text-card-foreground relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 p-6 shadow-xl transition-all ease-in-out md:col-span-6 xl:col-span-6 xl:col-start-8"
-                onMouseEnter={() => setIsFeature4Hovering(true)}
-                onMouseLeave={() => setIsFeature4Hovering(false)}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                whileHover={{
-                  rotateY: 5,
-                  rotateX: 2,
-                  boxShadow: "0 24px 60px rgba(28, 66, 89, 0.14)",
-                  borderColor: "rgba(96, 191, 164, 0.55)",
-                }}
-                style={{ transition: "all 0s ease-in-out" }}
-              >
-                <div className="flex flex-col gap-4">
-                  <h3 className="text-xl leading-tight font-semibold tracking-tight sm:text-2xl">
-                    Landing pages com IA integrada para captar mais leads
-                  </h3>
-                  <div className="text-md text-muted-foreground flex flex-col gap-2 text-sm">
-                    <p className="max-w-[460px]">
-                      Capte contatos qualificados e envie cada oportunidade para um fluxo de IA para vendas B2B.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex grow items-center justify-center select-none relative min-h-[300px] p-4">
-                  <div className="relative w-full max-w-sm">
-                    <img
-                      src="/modern-grid-layout.png"
-                      alt="Exemplo de landing page inteligente com captação de leads por IA"
-                      className="w-full h-auto rounded-lg shadow-lg"
-                    />
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-[#1C4259]/10 to-transparent"></div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </FollowerPointerCard>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-          className="mt-12 text-center"
-        >
-          <p className="mb-8 text-xl font-medium text-[#1C4259] md:text-2xl">
-            Você não precisa entender de IA. A Etz.org cuida da estratégia, integração e implantação.
+          <p className="mx-auto max-w-2xl text-base leading-7 text-[var(--color-bone-600)] sm:text-lg sm:leading-8 font-[family-name:var(--font-sans)]">
+            Tecnologia construída para o seu processo — não o contrário. Cada solução é definida com você, e nasce para resolver um problema concreto.
           </p>
-          <Button
-            onClick={scrollToPromo}
-            className="h-14 rounded-lg bg-[#FFF] px-8 text-lg font-bold tracking-[0.01em] text-[#1C4259] shadow-[0_16px_36px_rgba(13,38,31,0.22)] ring-1 ring-white/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:border-[#C1F277] hover:text-[#FFF] hover:bg-[#12382E] hover:shadow-[0_20px_44px_rgba(13,38,31,0.30),0_0_0_4px_rgba(127,242,12,0.10)] active:translate-y-0 active:scale-[0.98]"
+        </div>
+
+        {/* Bento — destaques visuais */}
+        <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-2">
+          {/* Card 1 — Agentes de IA */}
+          <motion.div
+            onMouseEnter={() => setIsAgentHovering(true)}
+            onMouseLeave={() => setIsAgentHovering(false)}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex flex-col gap-6 rounded-[var(--radius-lg)] border border-[var(--color-bone-200)] bg-[var(--color-bone-0)] p-7 shadow-[var(--shadow-sm)] transition-all duration-300 hover:shadow-[var(--shadow-md)]"
           >
-            Quero um agente de IA para minha empresa
-          </Button>
-        </motion.div>
+            <div className="flex flex-col gap-2">
+              <h3 className="text-2xl font-semibold leading-snug tracking-[-0.02em] text-[var(--color-forest-600)] font-[family-name:var(--font-display)]">
+                Agentes de IA
+              </h3>
+              <p className="text-sm leading-6 text-[var(--color-bone-600)] font-[family-name:var(--font-sans)]">
+                Atendimento, vendas e suporte automáticos
+              </p>
+            </div>
+
+            <div className="relative h-[360px] w-full overflow-hidden rounded-[var(--radius-md)] bg-gradient-to-br from-[var(--color-mint-400)] via-[var(--color-mint-300)] to-[var(--color-bamboo-200)]">
+              {/* Glow central */}
+              <motion.div
+                className="absolute top-1/2 left-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-bamboo-400)] opacity-40 blur-[74px]"
+                initial={{ scale: 1 }}
+                animate={isAgentHovering ? { scale: [1, 1.342, 1, 1.342] } : { scale: 1 }}
+                transition={{ duration: 3, ease: "easeInOut", repeat: isAgentHovering ? Infinity : 0 }}
+              />
+
+              {/* Linhas conectoras animadas */}
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center"
+                initial={{ opacity: 0 }}
+                animate={isAgentHovering ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <svg width="100%" height="100%" viewBox="0 0 121 94" className="absolute">
+                  <motion.path
+                    d="M 60.688 1.59 L 60.688 92.449 M 60.688 92.449 L 119.368 92.449 M 60.688 92.449 L 1.414 92.449"
+                    stroke="rgba(255,255,255,0.6)"
+                    fill="transparent"
+                    strokeDasharray="2 2"
+                    initial={{ pathLength: 0 }}
+                    animate={isAgentHovering ? { pathLength: 1 } : { pathLength: 0 }}
+                    transition={{ duration: 2, ease: "easeInOut" }}
+                  />
+                </svg>
+                <svg width="100%" height="100%" viewBox="0 0 121 94" className="absolute">
+                  <motion.path
+                    d="M 60.688 92.449 L 60.688 1.59 M 60.688 1.59 L 119.368 1.59 M 60.688 1.59 L 1.414 1.59"
+                    stroke="rgba(255,255,255,0.6)"
+                    fill="transparent"
+                    strokeDasharray="2 2"
+                    initial={{ pathLength: 0 }}
+                    animate={isAgentHovering ? { pathLength: 1 } : { pathLength: 0 }}
+                    transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
+                  />
+                </svg>
+              </motion.div>
+
+              {/* Conteúdo */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="flex items-center gap-6">
+                  <div className="flex flex-col gap-3">
+                    {agentLeft.map((item, index) => (
+                      <motion.div
+                        key={item.label}
+                        className="flex items-center gap-2 rounded-[var(--radius-sm)] bg-[var(--color-bone-0)] px-3 py-2 text-sm font-medium text-[var(--color-forest-600)] shadow-[var(--shadow-xs)]"
+                        initial={{ opacity: 1, x: 0 }}
+                        animate={isAgentHovering ? { x: [-16, 0] } : { x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <item.icon className="h-4 w-4 text-[var(--color-water-500)]" strokeWidth={1.75} />
+                        {item.label}
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  <motion.div
+                    className="flex h-20 w-20 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-forest-600)] shadow-[var(--shadow-md)]"
+                    initial={{ scale: 1 }}
+                    animate={isAgentHovering ? { scale: [1, 1.1, 1] } : { scale: 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
+                    <img
+                      src="/pandafy-logo.png"
+                      alt="Pandafy"
+                      className="h-14 w-14 object-contain"
+                      draggable={false}
+                    />
+                  </motion.div>
+
+                  <div className="flex flex-col gap-3">
+                    {agentRight.map((item, index) => (
+                      <motion.div
+                        key={item.label}
+                        className="flex items-center gap-2 rounded-[var(--radius-sm)] bg-[var(--color-bone-0)] px-3 py-2 text-sm font-medium text-[var(--color-forest-600)] shadow-[var(--shadow-xs)]"
+                        initial={{ opacity: 1, x: 0 }}
+                        animate={isAgentHovering ? { x: [16, 0] } : { x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <item.icon className="h-4 w-4 text-[var(--color-water-500)]" strokeWidth={1.75} />
+                        {item.label}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Borda circular animada */}
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center"
+                initial={{ opacity: 0 }}
+                animate={isAgentHovering ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <svg width="350" height="350" viewBox="0 0 350 350" className="opacity-40">
+                  <motion.path
+                    d="M 175 1.159 C 271.01 1.159 348.841 78.99 348.841 175 C 348.841 271.01 271.01 348.841 175 348.841 C 78.99 348.841 1.159 271.01 1.159 175 C 1.159 78.99 78.99 1.159 175 1.159 Z"
+                    stroke="rgba(255, 255, 255, 0.5)"
+                    strokeWidth="1.16"
+                    fill="transparent"
+                    strokeDasharray="4 4"
+                    initial={{ pathLength: 0, rotate: 0 }}
+                    animate={isAgentHovering ? { pathLength: 1, rotate: 360 } : { pathLength: 0, rotate: 0 }}
+                    transition={{
+                      pathLength: { duration: 3, ease: "easeInOut" },
+                      rotate: {
+                        duration: 20,
+                        repeat: isAgentHovering ? Infinity : 0,
+                        ease: "linear",
+                      },
+                    }}
+                  />
+                </svg>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Card 2 — Automações de processos */}
+          <motion.div
+            onMouseEnter={() => setIsFlowHovering(true)}
+            onMouseLeave={() => setIsFlowHovering(false)}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="group relative flex flex-col gap-6 overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-bone-200)] bg-[var(--color-bone-0)] p-7 shadow-[var(--shadow-sm)] transition-all duration-300 hover:shadow-[var(--shadow-md)]"
+          >
+            <div className="flex flex-col gap-2">
+              <h3 className="text-2xl font-semibold leading-snug tracking-[-0.02em] text-[var(--color-forest-600)] font-[family-name:var(--font-display)]">
+                Automações de processos
+              </h3>
+              <p className="text-sm leading-6 text-[var(--color-bone-600)] font-[family-name:var(--font-sans)]">
+                Menos tarefas manuais, mais eficiência
+              </p>
+            </div>
+
+            <div className="relative flex min-h-[360px] grow items-start justify-center">
+              <div className="mt-2 inline-block rounded-[var(--radius-md)] border border-[var(--color-bone-200)] bg-[var(--color-bone-0)] px-3 py-1.5">
+                <ScrambleHover
+                  text="Fluxo ativo"
+                  scrambleSpeed={70}
+                  maxIterations={20}
+                  useOriginalCharsOnly={false}
+                  className="cursor-pointer bg-gradient-to-t from-[var(--color-water-500)] to-[var(--color-mint-400)] bg-clip-text text-4xl font-semibold tracking-[-0.02em] text-transparent sm:text-5xl font-[family-name:var(--font-display)]"
+                  isHovering={isFlowHovering}
+                  setIsHovering={setIsFlowHovering}
+                  characters="abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;':\,./<>?"
+                />
+              </div>
+
+              <div className="absolute top-32 z-10 flex items-center justify-center">
+                <div className="h-[400px] w-[400px]">
+                  <Suspense
+                    fallback={
+                      <div className="h-[400px] w-[400px] animate-pulse rounded-full bg-[var(--color-bone-200)]" />
+                    }
+                  >
+                    <Earth baseColor={baseColor} markerColor={markerColor} glowColor={glowColor} dark={0} />
+                  </Suspense>
+                </div>
+              </div>
+
+              <div className="absolute top-1/2 w-full translate-y-20 scale-x-[1.2] opacity-70 transition-all duration-1000 group-hover:translate-y-8 group-hover:opacity-100">
+                <div className="absolute left-1/2 h-[256px] w-[60%] -translate-x-1/2 scale-[2.5] rounded-[50%] bg-radial from-[var(--color-mint-400)]/50 from-10% to-transparent to-60% opacity-20 sm:h-[512px]" />
+                <div className="absolute left-1/2 h-[128px] w-[40%] -translate-x-1/2 scale-200 rounded-[50%] bg-radial from-[var(--color-mint-400)]/30 from-10% to-transparent to-60% opacity-20 sm:h-[256px]" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Grid completo */}
+        <div className="mx-auto mt-5 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+              transition={{ duration: 0.5, delay: 0.05 * index }}
+              className="group flex flex-col gap-5 rounded-[var(--radius-lg)] border border-[var(--color-bone-200)] bg-[var(--color-bone-0)] p-7 shadow-[var(--shadow-sm)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-bamboo-200)]/35 text-[var(--color-forest-600)]">
+                <feature.icon className="h-5 w-5" strokeWidth={1.75} />
+              </div>
+              <h3 className="text-xl font-semibold leading-snug tracking-[-0.01em] text-[var(--color-forest-600)] font-[family-name:var(--font-display)]">
+                {feature.title}
+              </h3>
+              <p className="text-sm leading-6 text-[var(--color-bone-600)] font-[family-name:var(--font-sans)]">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </section>
   )

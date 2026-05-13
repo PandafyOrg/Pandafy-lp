@@ -1,119 +1,80 @@
 "use client"
-import { motion, AnimatePresence } from "framer-motion"
-import { useState, useEffect } from "react"
+
+import Link from "next/link"
+
+const navColumns = [
+  {
+    title: "Soluções",
+    links: [
+      { label: "Agentes de IA", href: "#solucoes" },
+      { label: "Automações de processo", href: "#solucoes" },
+      { label: "Software sob medida", href: "#solucoes" },
+      { label: "Analytics e dashboards", href: "#solucoes" },
+    ],
+  },
+  {
+    title: "Navegação",
+    links: [
+      { label: "Problema", href: "#problema" },
+      { label: "Como funciona", href: "#como-funciona" },
+      { label: "Depoimentos", href: "#depoimentos" },
+      { label: "FAQ", href: "#faq" },
+    ],
+  },
+  {
+    title: "Empresa",
+    links: [
+      { label: "Começar", href: "/comecar" },
+      { label: "Entrar", href: "/login" },
+      { label: "Criar conta", href: "/signup" },
+    ],
+  },
+]
 
 export function StickyFooter() {
-  const [isAtBottom, setIsAtBottom] = useState(false)
-
-  useEffect(() => {
-    let ticking = false
-
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const scrollTop = window.scrollY
-          const windowHeight = window.innerHeight
-          const documentHeight = document.documentElement.scrollHeight
-          const isNearBottom = scrollTop + windowHeight >= documentHeight - 100
-
-          setIsAtBottom(isNearBottom)
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    handleScroll() // Check initial state
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
   return (
-    <AnimatePresence>
-      {isAtBottom && (
-        <motion.div
-          className="fixed z-50 bottom-0 left-0 w-full h-80 flex justify-center items-center"
-          style={{ backgroundColor: "#C1F277" }}
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          exit={{ y: "100%" }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-        >
-          <div
-            className="relative overflow-hidden w-full h-full flex justify-end px-12 text-right items-start py-12"
-            style={{ color: "#121113" }}
-          >
-            <motion.div
-              className="flex flex-row space-x-12 sm:space-x-16 md:space-x-24 text-sm sm:text-lg md:text-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <ul className="space-y-2">
-                <li
-                  className="hover:underline cursor-pointer transition-colors"
-                  style={{ color: "#121113" }}
-                  onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
-                  onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
-                >
-                  Home
+    <footer className="relative bg-[var(--color-forest-600)] px-4 pt-20 pb-10 text-[var(--color-bone-100)]">
+      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="flex flex-col gap-4">
+          <img
+            src="/pandafy-logo.png"
+            alt="Pandafy"
+            width={120}
+            height={120}
+            className="h-24 w-24 select-none rounded-[var(--radius-lg)]"
+            draggable={false}
+          />
+          <p className="max-w-xs text-sm leading-6 text-[var(--color-bone-300)] font-[family-name:var(--font-sans)]">
+            IA, automações e software sob medida.
+          </p>
+        </div>
+
+        {navColumns.map((column) => (
+          <div key={column.title} className="flex flex-col gap-4">
+            <h4 className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-[var(--color-mint-300)] font-[family-name:var(--font-mono)]">
+              {column.title}
+            </h4>
+            <ul className="flex flex-col gap-2.5">
+              {column.links.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-[var(--color-bone-100)] transition-colors duration-200 hover:text-[var(--color-bamboo-400)] font-[family-name:var(--font-sans)]"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
-                <li
-                  className="hover:underline cursor-pointer transition-colors"
-                  style={{ color: "#121113" }}
-                  onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
-                  onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
-                >
-                  Soluções
-                </li>
-                <li
-                  className="hover:underline cursor-pointer transition-colors"
-                  style={{ color: "#121113" }}
-                  onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
-                  onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
-                >
-                  FAQ
-                </li>
-              </ul>
-              <ul className="space-y-2">
-                <li
-                  className="hover:underline cursor-pointer transition-colors"
-                  style={{ color: "#121113" }}
-                  onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
-                  onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
-                >
-                  Agentes de IA
-                </li>
-                <li
-                  className="hover:underline cursor-pointer transition-colors"
-                  style={{ color: "#121113" }}
-                  onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
-                  onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
-                >
-                  Automação de processos
-                </li>
-                <li
-                  className="hover:underline cursor-pointer transition-colors"
-                  style={{ color: "#121113" }}
-                  onMouseEnter={(e) => ((e.target as HTMLLIElement).style.color = "rgba(18, 17, 19, 0.8)")}
-                  onMouseLeave={(e) => ((e.target as HTMLLIElement).style.color = "#121113")}
-                >
-                  Software sob medida
-                </li>
-              </ul>
-            </motion.div>
-            <motion.h2
-              className="absolute bottom-20 left-0 translate-y-1/3 sm:text-[192px] text-[80px] font-bold select-none"
-              style={{ color: "#1C4259" }}
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              Etz.org
-            </motion.h2>
+              ))}
+            </ul>
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        ))}
+      </div>
+
+      <div className="mx-auto mt-16 max-w-6xl border-t border-[var(--color-forest-500)] pt-6">
+        <p className="text-xs text-[var(--color-bone-400)] font-[family-name:var(--font-sans)]">
+          © 2025 Pandafy. Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
   )
 }

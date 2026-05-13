@@ -51,11 +51,15 @@ export default function ComecarPage() {
             Voltar para a landing
           </Link>
 
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#60BFA4]/30 bg-white px-4 py-2 text-sm font-semibold text-[#1C4259] shadow-[0_10px_30px_rgba(28,66,89,0.08)]">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#7FF20C] via-[#C1F277] to-[#60BFA4] text-xs font-bold text-[#0D261F]">
-              Etz
-            </div>
-            Etz.org
+          <div className="inline-flex items-center rounded-full border border-[#60BFA4]/30 bg-white px-4 py-2 shadow-[0_10px_30px_rgba(28,66,89,0.08)]">
+            <img
+              src="/pandafy-logo-sem-fundo.png"
+              alt="Pandafy"
+              width={112}
+              height={28}
+              className="h-7 w-auto select-none"
+              draggable={false}
+            />
           </div>
         </div>
 
@@ -72,7 +76,7 @@ export default function ComecarPage() {
             <div className="space-y-8">
               <div className="max-w-2xl space-y-4">
                 <span className="inline-flex items-center rounded-full border border-[#60BFA4]/30 bg-[#EEF8F5] px-4 py-2 text-sm font-medium text-[#1C4259]">
-                  Comece sua conversa com a Etz.org
+                  Comece sua conversa com a Pandafy
                 </span>
                 <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
                   Conte o que sua empresa precisa e aceleramos o próximo passo.

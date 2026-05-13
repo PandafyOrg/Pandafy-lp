@@ -1,86 +1,94 @@
 "use client"
 
 import Link from "next/link"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
+import { cn } from "@/lib/utils"
+import { ArrowRight } from "lucide-react"
+
+const steps = [
+  {
+    number: "01",
+    title: "Diagnóstico",
+    description: "Entendemos seu processo, suas dores e onde a IA pode gerar mais valor.",
+  },
+  {
+    number: "02",
+    title: "Proposta técnica",
+    description: "Um plano claro: escopo, tecnologia, prazo e investimento sem surpresa.",
+  },
+  {
+    number: "03",
+    title: "Entrega e evolução",
+    description: "Implementamos, treinamos seu time e continuamos junto.",
+  },
+]
 
 export function NewReleasePromo() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
+
   return (
-    <section id="cta-section" className="mt-12 w-full">
-      <div className="mx-auto max-w-4xl rounded-[40px] border border-[#1C4259]/10 bg-white/80 p-2 shadow-[0_18px_50px_rgba(28,66,89,0.08)]">
-        <div className="relative mx-auto h-[400px] max-w-4xl overflow-hidden rounded-[38px] border border-[#1C4259]/10 bg-[linear-gradient(135deg,#1C4259_0%,#60BFA4_62%,#C1F277_100%)] p-2 shadow-sm">
-          <div
-            className="absolute inset-0 z-0"
-            style={{
-              background: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255, 255, 255, 0.18), transparent 70%)",
-            }}
-          />
+    <section
+      id="como-funciona-section"
+      className="relative bg-[var(--color-bone-50)] py-24 md:py-32 lg:py-40"
+    >
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+        transition={{ duration: 0.6 }}
+        className="container mx-auto px-4"
+      >
+        <div className="mx-auto max-w-4xl text-center">
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-bone-200)] bg-[var(--color-bone-0)] px-3 py-1.5 text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-[var(--color-bone-600)] font-[family-name:var(--font-mono)]">
+            <span className="size-1.5 rounded-full bg-[var(--color-bamboo-400)]" />
+            Como funciona
+          </span>
 
-          <div
-            className="absolute inset-0 z-0 opacity-[0.02]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-            }}
-          />
-
-          <div className="relative z-10">
-            <div className="mt-8 text-center">
-              <h2 className="mb-6 text-4xl font-bold text-white">
-                Automatize processos e escale com clareza.
-              </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-white/85">
-                Comece com um diagnóstico rápido e descubra onde agentes de IA, automação empresarial e software sob
-                medida podem gerar resultado primeiro.
-              </p>
-              <div className="flex items-center justify-center">
-                <Link href="/comecar">
-                  <div className="group mt-10 flex h-[64px] cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-white/15 p-[11px] shadow-[0_12px_30px_rgba(13,38,31,0.16)]">
-                    <div className="flex h-[43px] items-center justify-center rounded-full border border-[#0D261F]/10 bg-[#7FF20C]">
-                      <p className="mr-3 ml-2 flex items-center justify-center gap-2 font-medium tracking-tight text-[#0D261F]">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-globe animate-spin"
-                          aria-hidden="true"
-                        >
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                          <path d="M2 12h20"></path>
-                        </svg>
-                        Começar minha automação
-                      </p>
-                    </div>
-                    <div className="flex size-[26px] items-center justify-center rounded-full border-2 border-white/40 text-white transition-all ease-in-out group-hover:ml-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-arrow-right transition-all ease-in-out group-hover:rotate-45"
-                        aria-hidden="true"
-                      >
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                      </svg>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-          </div>
+          <h2
+            className={cn(
+              "mb-6 text-balance font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--color-forest-600)]",
+              "text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem]",
+              "font-[family-name:var(--font-display)]"
+            )}
+          >
+            Do briefing ao resultado em semanas, não meses.
+          </h2>
         </div>
-      </div>
+
+        <div className="mx-auto mt-16 grid max-w-6xl gap-5 md:grid-cols-3">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+              transition={{ duration: 0.5, delay: 0.08 * index }}
+              className="flex flex-col gap-5 rounded-[var(--radius-lg)] border border-[var(--color-bone-200)] bg-[var(--color-bone-0)] p-7 shadow-[var(--shadow-sm)]"
+            >
+              <span className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-[var(--color-bone-500)] font-[family-name:var(--font-mono)]">
+                {step.number}
+              </span>
+              <h3 className="text-2xl font-semibold leading-snug tracking-[-0.02em] text-[var(--color-forest-600)] font-[family-name:var(--font-display)]">
+                {step.title}
+              </h3>
+              <p className="text-sm leading-6 text-[var(--color-bone-600)] font-[family-name:var(--font-sans)]">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-14 flex justify-center">
+          <Link
+            href="/comecar"
+            className="inline-flex h-13 items-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-bamboo-400)] px-7 text-base font-semibold text-[var(--color-forest-600)] shadow-[var(--shadow-sm)] transition-all duration-300 hover:bg-[var(--color-bamboo-300)] hover:shadow-[var(--shadow-md)] focus-visible:shadow-[var(--shadow-glow)] active:scale-[0.98]"
+          >
+            Quero começar agora
+            <ArrowRight className="h-4 w-4" strokeWidth={2} />
+          </Link>
+        </div>
+      </motion.div>
     </section>
   )
 }

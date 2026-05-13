@@ -3,111 +3,96 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { cn } from "@/lib/utils"
-import { geist } from "@/lib/fonts"
-import { BarChartIcon, ClockIcon, GearIcon, GroupIcon, PersonIcon } from "@radix-ui/react-icons"
-import { Button } from "@/components/ui/button"
+import { AlertTriangle, Clock, LifeBuoy } from "lucide-react"
 
 const problemas = [
   {
-    icon: ClockIcon,
-    text: "Atendimento lento ou inexistente fora do horário",
+    icon: AlertTriangle,
+    title: "Ferramentas prontas que não se encaixam no seu processo",
+    description:
+      "Você adapta o time à ferramenta — e não o contrário. Resultado: workarounds, planilhas paralelas e adoção pela metade.",
   },
   {
-    icon: PersonIcon,
-    text: "Leads chegam e ninguém responde",
+    icon: Clock,
+    title: "Projetos longos, orçamentos estourados e sem resultado visível",
+    description:
+      "Cronogramas que escorregam, escopo que cresce no escuro e a sensação de estar pagando para esperar.",
   },
   {
-    icon: GearIcon,
-    text: "Processos manuais e retrabalho",
-  },
-  {
-    icon: BarChartIcon,
-    text: "Falta de controle e dados",
-  },
-  {
-    icon: GroupIcon,
-    text: "Equipe sobrecarregada",
+    icon: LifeBuoy,
+    title: "Times sem tempo para aprender — e sem suporte quando precisam",
+    description:
+      "A tecnologia exige curva de aprendizado e ninguém atende quando o sistema engasga. O custo real é o time travado.",
   },
 ]
 
 export function ProblemaSection() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
-
-  const scrollToPromo = () => {
-    const element = document.getElementById("cta-section")
-    if (element) {
-      const headerOffset = 120
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-      const offsetPosition = elementPosition - headerOffset
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      })
-    }
-  }
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
-    <section id="problema" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
-      <div className="bg-[#60BFA4] absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 rounded-full opacity-25 blur-3xl select-none"></div>
-      <div className="via-[#60BFA4]/50 absolute top-0 left-1/2 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent to-transparent transition-all ease-in-out"></div>
-      
+    <section
+      id="problema-section"
+      className="relative bg-[var(--color-bone-50)] py-24 md:py-32 lg:py-40"
+    >
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+        transition={{ duration: 0.6 }}
         className="container mx-auto px-4"
       >
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="mx-auto max-w-4xl text-center">
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-bone-200)] bg-[var(--color-bone-0)] px-3 py-1.5 text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-[var(--color-bone-600)] font-[family-name:var(--font-mono)]">
+            <span className="size-1.5 rounded-full bg-[var(--color-mint-400)]" />
+            O problema
+          </span>
 
           <h2
             className={cn(
-              "text-3xl sm:text-4xl md:text-5xl lg:text-[54px] lg:leading-[60px] font-semibold tracking-tighter text-balance mb-12",
-              "bg-gradient-to-r from-[#0D261F] via-[#1C4259] to-[#60BFA4] bg-clip-text text-transparent",
-              geist.className
+              "mb-6 text-balance font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--color-forest-600)]",
+              "text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem]",
+              "font-[family-name:var(--font-display)]"
             )}
           >
-            Por que empresas perdem leads e dinheiro sem automação de processos?
+            Tecnologia cara, genérica e que nunca entrega o que prometeu.
           </h2>
 
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-8 text-[#243F38]/78">
-            Sem automação empresarial, atendimento lento, retrabalho e falta de dados travam vendas todos os dias. A
-            Etz.org identifica esses gargalos e transforma etapas manuais em fluxos inteligentes.
+          <p className="mx-auto max-w-2xl text-base leading-7 text-[var(--color-bone-600)] sm:text-lg sm:leading-8 font-[family-name:var(--font-sans)]">
+            A maioria das empresas convive com sistemas que prometem produtividade e entregam atrito. Você reconhece estes padrões?
           </p>
-
-          <div className="grid gap-4 md:gap-6 max-w-2xl mx-auto">
-            {problemas.map((problema, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                className="flex items-center gap-4 rounded-xl border border-[#1C4259]/10 bg-white/90 p-4 shadow-[0_10px_30px_rgba(28,66,89,0.06)] backdrop-blur-sm transition-all hover:border-[#60BFA4]/40"
-              >
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#EEF8F5]">
-                  <problema.icon className="h-5 w-5 text-[#1C4259]" />
-                </div>
-                <span className="text-lg text-[#0D261F]">{problema.text}</span>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            className="mt-10"
-          >
-            <Button
-              onClick={scrollToPromo}
-              className="h-14 rounded-lg bg-[#FFF] px-8 text-lg font-bold tracking-[0.01em] text-[#1C4259] shadow-[0_16px_36px_rgba(13,38,31,0.22)] ring-1 ring-white/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:border-[#C1F277] hover:text-[#FFF] hover:bg-[#12382E] hover:shadow-[0_20px_44px_rgba(13,38,31,0.30),0_0_0_4px_rgba(127,242,12,0.10)] active:translate-y-0 active:scale-[0.98]"
-
-            >
-              Quero resolver isso com IA
-            </Button>
-          </motion.div>
         </div>
+
+        <div className="mx-auto mt-14 grid max-w-5xl gap-5 md:grid-cols-3">
+          {problemas.map((problema, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
+              className="flex flex-col gap-4 rounded-[var(--radius-lg)] border border-[var(--color-bone-200)] bg-[var(--color-bone-0)] p-6 shadow-[var(--shadow-sm)] transition-all duration-300 hover:shadow-[var(--shadow-md)]"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-bone-100)] text-[var(--color-water-500)]">
+                <problema.icon className="h-5 w-5" strokeWidth={1.75} />
+              </div>
+              <h3 className="text-lg font-semibold leading-snug tracking-[-0.01em] text-[var(--color-forest-600)] font-[family-name:var(--font-display)]">
+                {problema.title}
+              </h3>
+              <p className="text-sm leading-6 text-[var(--color-bone-600)] font-[family-name:var(--font-sans)]">
+                {problema.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-14 text-center text-xl font-medium text-[var(--color-forest-600)] sm:text-2xl font-[family-name:var(--font-display)]"
+        >
+          A Pandafy existe para mudar isso.
+        </motion.p>
       </motion.div>
     </section>
   )
